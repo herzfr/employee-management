@@ -40,10 +40,10 @@ There are some dependencies that I use to make it easier to build this applicati
 
 | Dependency | Documentation |
 | ------ | ------ |
-| Angular Material | [https://material.angular.io/][PlDb] |
-| Bootstrap | [https://getbootstrap.com/][PlGh] |
-| NgRX | [https://ngrx.io/][PlGd] |
-| NgxCurrency | [https://www.npmjs.com/package/ngx-currency][PlOd] |
+| Angular Material | [https://material.angular.io/] |
+| Bootstrap | [https://getbootstrap.com/]|
+| NgRX | [https://ngrx.io/] |
+| NgxCurrency | [https://www.npmjs.com/package/ngx-currency] |
 
 ## Verion Angular
 
