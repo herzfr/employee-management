@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { EmployeeService } from "../_services/employee.service";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import * as EmployeeAction from './employee.action'
-import { Observable, catchError, map, mergeMap, of, switchMap } from "rxjs";
-import { IEmployee } from "src/app/shared/interface";
+import { catchError, map, mergeMap, of } from "rxjs";
 import { EmplyRepository } from "../_services/employee.repository";
+
+import * as EmployeeAction from './employee.action'
 
 @Injectable()
 export class EmplyEffects {
@@ -17,8 +17,4 @@ export class EmplyEffects {
             catchError((error) => of(EmployeeAction.loadEmployeesFailure({ error })))
         ))
 
-    create$ = createEffect(() => this.actions$.pipe(ofType(EmployeeAction.createEmply)))
-
-
-    // https://stackblitz.com/edit/github-ngrx-crud?file=src%2Fapp%2Fgames%2Fstore%2Fgames.effects.ts,src%2Fapp%2Fgames%2Fshared%2Fgames.service.ts,src%2Fapp%2Fgames%2Fstore%2Fplatforms.effects.ts
 }

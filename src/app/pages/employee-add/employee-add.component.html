@@ -64,7 +64,7 @@
                         <div class="col-12 col-md-4">
                             <div class="form-group mb-2">
                                 <label for="inputGroup">Group</label>
-                                <input type="text" class="form-control" id="inputGroup" matInput [matAutocomplete]="auto"
+                                <input (focus)="onFocus()" type="text" class="form-control" id="inputGroup" matInput [matAutocomplete]="auto"
                                     aria-describedby="groupHelp" placeholder="Choose Group" 
                                     formControlName="group">
                                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -105,8 +105,8 @@
                 <mat-divider></mat-divider>
             </mat-card-content>
             <mat-card-actions class="justify-content-between">
-                <button (click)="back()" mat-button>Back</button>
-                <button (click)="submit(employeeForm)" type="submit" mat-button class="btn-submit">OK</button>
+                <button (click)="back()" mat-button>Cancel</button>
+                <button (click)="submit(employeeForm)" type="submit" mat-button class="btn-submit">Save</button>
             </mat-card-actions>
         </mat-card>
     </div>

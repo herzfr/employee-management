@@ -10,17 +10,24 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-.mat-mdc-snack-bar-container.yellow-snackbar {
+.mat-mdc-snack-bar-container.warning {
     --mdc-snackbar-container-color: #f3f321;
     --mat-mdc-snack-bar-button-color: #2e2e2e;
     --mdc-snackbar-supporting-text-color: #2e2e2e;
     background: #f3f321 !important;
 }
 
-.mat-mdc-snack-bar-container.red-snackbar {
+.mat-mdc-snack-bar-container.danger {
     --mdc-snackbar-container-color: #F44336;
     --mat-mdc-snack-bar-button-color: #ffffff;
     --mdc-snackbar-supporting-text-color: #ffffff;
     background: #F44336 !important;
-    color: white;
+}
+
+
+.mat-mdc-snack-bar-container.success {
+    --mdc-snackbar-container-color: #16ab4a;
+    --mat-mdc-snack-bar-button-color: #ffffff;
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    background: #16ab4a !important;
 }

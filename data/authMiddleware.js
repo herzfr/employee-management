@@ -5,11 +5,12 @@ const USERNAME = 'admin'
 const PASSWORD = '123qwe'
 
 const mappings = {
-    get: ['/api/employees', '/employees']
+    get: ['/api/employees', '/employees'],
 }
 
 
 function requiresAuth(method, url) {
+    console.log('datq', url);
     return (mappings[method.toLowerCase()] || [])
         .find(p => url.startsWith(p)) !== undefined;
 }

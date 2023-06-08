@@ -6,6 +6,7 @@ import { CurrencyMaskInputMode } from 'ngx-currency';
 import { Location } from '@angular/common';
 import { EmplyRepository } from '../_services/employee.repository';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee-add',
@@ -34,13 +35,23 @@ export class EmployeeAddComponent implements OnInit {
     inputMode: CurrencyMaskInputMode.FINANCIAL,
   };
 
-  constructor(private formBuilder: FormBuilder, private location: Location, private emplRepo: EmplyRepository, private router: Router) { }
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private location: Location,
+    private emplRepo: EmplyRepository,
+    private router: Router,
+    private _snackBar: MatSnackBar,
+  ) { }
 
   get groups() { return this.employeeForm.get('group') }
   get status() { return this.employeeForm.get('status') }
   get salary() { return this.employeeForm.get('basicSalary') }
 
   ngOnInit(): void {
+    this.options = this.g
     this.buildForm()
     this.filteredOptions = this.groups!.valueChanges.pipe(
       startWith(''),
@@ -50,6 +61,14 @@ export class EmployeeAddComponent implements OnInit {
 
   get f(): { [key: string]: AbstractControl } {
     return this.employeeForm.controls;
+  }
+
+  get g() {
+    return this.emplRepo.groups_collection
+  }
+
+  onFocus() {
+    this.options = this.g
   }
 
   private _filter(value: string): string[] {
@@ -72,20 +91,26 @@ export class EmployeeAddComponent implements OnInit {
   }
 
   async submit({ value, valid }: { value: IEmployee, valid: boolean }) {
-    console.log(value);
     this.addNewProduct(value)
-
   }
 
   addNewProduct(emply: IEmployee) {
     this.emplRepo.employeeD = [...this.emplRepo.employeeD, emply]
+    this.openSnackBar(`Add Data Success`, 'success')
     this.router.navigate([''])
+  }
+
+
+  openSnackBar(message: string, color: 'danger' | 'warning' | 'success') {
+    this._snackBar.open(message, 'X', {
+      panelClass: [color],
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    },);
   }
 
   back() {
     this.location.back()
   }
-
-
 
 }

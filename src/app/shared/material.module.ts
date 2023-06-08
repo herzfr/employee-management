@@ -13,6 +13,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSortModule } from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
     exports: [
@@ -29,7 +31,9 @@ import { MatRadioModule } from '@angular/material/radio';
         MatNativeDateModule,
         MatAutocompleteModule,
         MatCheckboxModule,
-        MatRadioModule
+        MatRadioModule,
+        MatSortModule,
+        MatToolbarModule
     ]
 })
 export class MaterialModule { }

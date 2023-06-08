@@ -8,8 +8,7 @@ import { loadEmployees } from "../_ngrx/employee.action";
 @Injectable({ providedIn: 'root' })
 export class EmplyRepository {
 
-
-
+    keyword: string = ''
     emplys$: Observable<IEmployee[]> | undefined;
     employeeD: IEmployee[] = []
 
@@ -17,16 +16,17 @@ export class EmplyRepository {
         this.emplys$ = this.store.select(selectAllEmployee)
         this.store.dispatch(loadEmployees())
         this.emplys$?.subscribe(res => {
-            this.employeeD = res
-        })
-    }
+            this.employeeD = [...res]
 
-    ngOnChanges(changes: SimpleChanges) {
-        console.log(changes)
+        })
     }
 
     get emplyList() {
         return this.employeeD
+    }
+
+    get groups_collection() {
+        return this.emplyList.map(m => { return m.group })
     }
 
     getEmolyByUsername(username: string) {
@@ -34,7 +34,9 @@ export class EmplyRepository {
     }
 
     deleteEmpl(username: string) {
-
+        let empl = this.emplyList.findIndex(fi => fi.username == username)
+        if (empl !== -1) this.employeeD.splice(empl, 1)
+        this.employeeD = [...this.employeeD]
     }
 
 

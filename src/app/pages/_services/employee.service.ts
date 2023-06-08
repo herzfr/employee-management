@@ -23,15 +23,4 @@ export class EmployeeService {
         return this.http.get<IEmployee[]>(`${this.url}/employees`, { headers: this.header })
     }
 
-    createEmployee(empl: IEmployee) {
-        console.log('empl', empl);
-        new BehaviorSubject<IEmployee[]>([])
-    }
-
-    // getEmployees() {
-    //     return this.http.get(`${this.url}/employees`, { headers: this.header })
-    //         .toPromise()
-    //         .then(e => e as IEmployee[])
-    // }
-
 }

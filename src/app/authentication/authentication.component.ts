@@ -61,16 +61,13 @@ export class AuthenticationComponent implements OnInit {
   }
 
   async submit({ value, valid }: { value: IUserLogin, valid: boolean }) {
-    console.log(value);
     let data = await this._authservice.login(value)
-    console.log('response', data);
     if (data.success) {
       this._setauth.setLoginSucces(data)
       this._router.navigate(['/home']);
     } else {
       alert('login gagal, username atau password tidak cocok')
     }
-
   }
 
 }

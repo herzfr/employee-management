@@ -19,8 +19,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   constructor(private emplRepo: EmplyRepository, private location: Location, private activeRoute: ActivatedRoute) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   get emply$() {
     return this.emplRepo.getEmolyByUsername(this.activeRoute.snapshot.paramMap.get('id') as string)
