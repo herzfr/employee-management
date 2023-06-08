@@ -1,0 +1,113 @@
+<div class="container-fluid py-3">
+    <div class="row">
+        <p class="h4">Add Employee</p>
+    </div>
+    <div class="col">
+        <mat-card class="example-card">
+            <mat-card-content class="py-3">
+
+                <form class="my-3 container" [formGroup]="employeeForm" (ngSubmit)="submit(employeeForm)" novalidate>
+
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group mb-2">
+                                <label for="inputUsername">Username</label>
+                                <input type="text" class="form-control" id="inputUsername"
+                                    aria-describedby="usernameHelp" placeholder="Ex johndoe72"
+                                    formControlName="username">
+                                <small [hidden]="f['username'].untouched || f['username'].valid" id="usernameHelp" class="form-text text-danger">Username is required</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-group mb-2">
+                                <label for="inputFirstname">First Name</label>
+                                <input type="text" class="form-control" id="inputFirstname"
+                                    aria-describedby="firstnameHelp" placeholder="Ex John"
+                                    formControlName="firstName">
+                                <small [hidden]="f['firstName'].untouched || f['firstName'].valid" id="firstnameHelp" class="form-text text-danger">Firstname is required.</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-group mb-2">
+                                <label for="inputLastName">Last Name</label>
+                                <input type="text" class="form-control" id="inputLastName"
+                                    aria-describedby="lastnameHelp" placeholder="Ex Doe"
+                                    formControlName="lastName">
+                                <small [hidden]="f['lastName'].untouched || f['lastName'].valid" id="lastnameHelp" class="form-text text-danger">Lastname is required.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group mb-2">
+                                <label for="inputEmail">Email</label>
+                                <input type="text" class="form-control" id="inputEmail"
+                                    aria-describedby="emailHelp" placeholder="Ex johndoe@mail.com"
+                                    formControlName="email">
+                                <small [hidden]="f['email'].untouched || f['email'].valid"  id="emailHelp" class="form-text text-danger">Email is required</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-group mb-2">
+                                <label for="inputBirthdate">Birthdate</label>
+                                <div class="d-flex">
+                                    <input type="text" class="form-control" id="inputBirthdate" matInput
+                                    aria-describedby="birthDateHelp" placeholder="DD/MM/YYYY" [matDatepicker]="dp3" [max]="maxDate"
+                                    formControlName="birthDate" readonly>
+                                    <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                                    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                                </div>
+                                <small [hidden]="f['birthDate'].untouched || f['birthDate'].valid" id="birthDateHelp" class="form-text text-danger">Birthdate is required.</small>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-group mb-2">
+                                <label for="inputGroup">Group</label>
+                                <input type="text" class="form-control" id="inputGroup" matInput [matAutocomplete]="auto"
+                                    aria-describedby="groupHelp" placeholder="Choose Group" 
+                                    formControlName="group">
+                                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                        {{option}}
+                                    </mat-option>
+                                    </mat-autocomplete>
+                                <small [hidden]="f['group'].untouched || f['group'].valid" id="groupHelp" class="form-text text-danger">Group is required.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <section class="example-section">
+                                <label class="example-margin">Status:</label>
+                                <mat-radio-group formControlName="status">
+                                  <mat-radio-button class="example-margin" value="active">Active</mat-radio-button>
+                                  <mat-radio-button class="example-margin" value="inactive">Inactive</mat-radio-button>
+                                </mat-radio-group>
+                            </section>
+                        </div>
+                        <div class="col-12 col-md">
+                            <div class="form-group mb-2">
+                                <label for="inputBasicSalary">Basic Salary</label>
+                                <div class="d-flex">
+                                    <input currencyMask [options]="currencyMaskConfig" type="text" class="form-control" id="inputBasicSalary" matInput 
+                                    aria-describedby="basicSalaryHelp" placeholder="Rp 0,-"
+                                    formControlName="basicSalary">
+                                </div>
+                                <small [hidden]="f['basicSalary'].untouched || f['basicSalary'].valid" id="basicSalaryHelp" class="form-text text-danger">Basic salary is required.</small>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+                <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions class="justify-content-between">
+                <button (click)="back()" mat-button>Back</button>
+                <button (click)="submit(employeeForm)" type="submit" mat-button class="btn-submit">OK</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

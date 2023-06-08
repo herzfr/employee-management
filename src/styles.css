@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html, body {
+    width: 100%;
+    height: 100vh;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-mdc-snack-bar-container.yellow-snackbar {
+    --mdc-snackbar-container-color: #f3f321;
+    --mat-mdc-snack-bar-button-color: #2e2e2e;
+    --mdc-snackbar-supporting-text-color: #2e2e2e;
+    background: #f3f321 !important;
+}
+
+.mat-mdc-snack-bar-container.red-snackbar {
+    --mdc-snackbar-container-color: #F44336;
+    --mat-mdc-snack-bar-button-color: #ffffff;
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    background: #F44336 !important;
+    color: white;
+}
