@@ -106,7 +106,7 @@
             </mat-card-content>
             <mat-card-actions class="justify-content-between">
                 <button (click)="back()" mat-button>Cancel</button>
-                <button (click)="submit(employeeForm)" type="submit" mat-button class="btn-submit">Save</button>
+                <button [disabled]="!employeeForm.valid" [class.btn-submit]="employeeForm.valid" (click)="submit(employeeForm)" type="submit" mat-button class="">Save</button>
             </mat-card-actions>
         </mat-card>
     </div>
